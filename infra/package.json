@@ -1,0 +1,25 @@
+{
+    "name": "feedback-infra",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc -w",
+        "cdk": "cdk",
+        "synth": "cdk synth",
+        "deploy": "cdk deploy",
+        "destroy": "cdk destroy",
+        "local:bootstrap": "cdklocal bootstrap",
+        "local:deploy": "cdklocal deploy --require-approval never",
+        "local:destroy": "cdklocal destroy --force"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.5",
+        "aws-cdk": "^2.175.1",
+        "aws-cdk-local": "^2.19.0",
+        "typescript": "^5.7.3"
+    },
+    "dependencies": {
+        "aws-cdk-lib": "^2.175.1",
+        "constructs": "^10.4.2"
+    }
+}

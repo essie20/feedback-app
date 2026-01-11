@@ -1,0 +1,116 @@
+.stats-container {
+    background: var(--gradient-card);
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-6);
+}
+
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+}
+
+.stats-header h2 {
+    font-size: var(--font-size-xl);
+    margin: 0;
+}
+
+.total-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-2) var(--spacing-4);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+}
+
+.total-number {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+}
+
+.total-label {
+    font-size: var(--font-size-xs);
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.category-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+
+.stat-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--spacing-2);
+    align-items: center;
+}
+
+.stat-header {
+    display: flex;
+    justify-content: space-between;
+    grid-column: 1 / -1;
+}
+
+.stat-category {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.stat-count {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+.stat-bar {
+    height: 8px;
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    flex: 1;
+}
+
+.stat-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width var(--transition-slow);
+    min-width: 4px;
+}
+
+.stat-percentage {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    min-width: 40px;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .stats-container {
+        padding: var(--spacing-4);
+    }
+
+    .stats-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-3);
+    }
+
+    .total-badge {
+        flex-direction: row;
+        gap: var(--spacing-2);
+        padding: var(--spacing-2) var(--spacing-3);
+    }
+
+    .total-number {
+        font-size: var(--font-size-lg);
+    }
+}
