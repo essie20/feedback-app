@@ -2,8 +2,7 @@ import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import {
     DynamoDBDocumentClient,
     PutCommand,
-    ScanCommand,
-    CreateTableCommand
+    ScanCommand
 } from '@aws-sdk/lib-dynamodb';
 
 export interface FeedbackItem {
@@ -27,7 +26,7 @@ const docClient = DynamoDBDocumentClient.from(client);
 const TABLE_NAME = process.env.DYNAMODB_TABLE_NAME || 'feedback';
 
 // In-memory fallback storage when DynamoDB is unavailable
-let inMemoryStorage: FeedbackItem[] = [];
+const inMemoryStorage: FeedbackItem[] = [];
 let usingFallback = false;
 
 /**
