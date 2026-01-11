@@ -4,6 +4,14 @@ A full-stack web application demonstrating modern development practices includin
 
 ![CI/CD Pipeline](https://github.com/essie20/feedback-app/actions/workflows/ci.yml/badge.svg)
 
+## Screenshots
+
+<img width="1331" height="954" alt="image" src="https://github.com/user-attachments/assets/16ec1bd4-6a8c-41e9-a517-b97a1b7b49f5" />
+
+<img width="1342" height="1098" alt="image" src="https://github.com/user-attachments/assets/0700a16d-ed72-4d61-81b0-d803080ea27f" />
+
+
+
 ## 🏗️ Architecture
 
 ```
