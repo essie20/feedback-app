@@ -106,8 +106,9 @@ Category:`;
         );
 
         return matchedCategory || responseText || CATEGORIES.GENERAL;
-    } catch (error: any) {
-        console.error('⚠️ Gemini API error, falling back to rule-based:', error.message);
+    } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : String(error);
+        console.error('⚠️ Gemini API error, falling back to rule-based:', message);
         return ruleBasedCategorize(text);
     }
 }

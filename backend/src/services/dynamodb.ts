@@ -48,11 +48,12 @@ export async function initializeTable(): Promise<void> {
         }));
 
         console.log(`✅ Created DynamoDB table: ${TABLE_NAME}`);
-    } catch (error: any) {
-        if (error.name === 'ResourceInUseException') {
+    } catch (error: unknown) {
+        const err = error as { name?: string; message: string };
+        if (err.name === 'ResourceInUseException') {
             console.log(`📦 DynamoDB table already exists: ${TABLE_NAME}`);
         } else {
-            console.error('⚠️ Could not create DynamoDB table:', error.message);
+            console.error('⚠️ Could not create DynamoDB table:', err.message);
             console.log('📝 Using in-memory storage as fallback');
             usingFallback = true;
         }
@@ -73,8 +74,9 @@ export async function saveFeedback(item: FeedbackItem): Promise<void> {
             TableName: TABLE_NAME,
             Item: item
         }));
-    } catch (error: any) {
-        console.error('⚠️ DynamoDB save failed, using fallback:', error.message);
+    } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : String(error);
+        console.error('⚠️ DynamoDB save failed, using fallback:', message);
         usingFallback = true;
         inMemoryStorage.unshift(item);
     }
@@ -98,8 +100,9 @@ export async function getAllFeedback(): Promise<FeedbackItem[]> {
         return items.sort((a, b) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
-    } catch (error: any) {
-        console.error('⚠️ DynamoDB fetch failed, using fallback:', error.message);
+    } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : String(error);
+        console.error('⚠️ DynamoDB fetch failed, using fallback:', message);
         usingFallback = true;
         return inMemoryStorage;
     }
